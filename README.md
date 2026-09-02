@@ -122,3 +122,18 @@ Enable theme by setting the `theme` options in the lualine options, e.g.:
 ```fnl
 (local opts {:options {:theme :no-clown-fiesta}})
 ```
+
+## System palette (`palette.json`)
+
+This fork ships `palette.json`, the dark palette expressed in the semantic role
+schema used by [lumiere.nvim](https://github.com/denismaciel/lumiere.nvim)
+(`background`, `surface_raised`, `text_muted`, `ansi_*`, ...). The dotfiles
+read it to theme ghostty, tmux, starship and friends so the terminal matches
+the editor.
+
+`lua/no-clown-fiesta/palettes.lua` is the source of truth. After editing it:
+
+```sh
+python3 scripts/gen_palette.py          # regenerate palette.json
+python3 scripts/gen_palette.py --check  # CI: fail if stale
+```
